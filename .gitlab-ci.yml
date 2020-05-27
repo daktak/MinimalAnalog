@@ -27,9 +27,8 @@ before_script:
 
 cache:
   paths:
-    - ~/pebble-dev
-    - /root/.cache/pip
-    - ~/.pebble_sdk
+    - /builds/pebble-dev
+    - /builds/.cache/pip
 
 stages:
   - build
