@@ -1,5 +1,5 @@
 {
-    "author": "keithharp@bellsouth.net",
+    "author": "daktak@domo.ddns.net",
     "dependencies": {
         "pebble-clay": "^1.0.2"
     },
@@ -108,7 +108,7 @@
             "chalk",
             "diorite"
         ],
-        "uuid": "8ec25a28-e8fb-46d5-a735-067f973c84fb",
+        "uuid": "f7e8c572-f5a0-41ea-8cff-0f30a151c225",
         "watchapp": {
             "watchface": true
         }
