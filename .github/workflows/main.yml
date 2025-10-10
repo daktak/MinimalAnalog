@@ -31,6 +31,8 @@ jobs:
         run: curl -LsSf https://astral.sh/uv/install.sh | sh
       - name: install pebble
         run: uv tool install pebble-tool
+      - name: install sdk
+        run: pebble sdk install 4.5
       - name: make
         run: make travis_build
       - name: Upload PBW
