@@ -34,7 +34,7 @@ jobs:
       - name: make
         run: make travis_build
       - name: Upload PBW
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v4
         with:
           name: App
           path: ${{ github.workspace }}/build/MinimalAnalog.pbw
