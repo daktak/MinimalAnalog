@@ -171,32 +171,30 @@ function getRepString (rep) {
 }
 
 function queryCoin(messageId, coin, currency, api) {
-  console.log('CMC api: '+api);
-  var currencyS = parseCurrency(currency);
-  const options = {
-    method: 'GET',
-    headers: {
-       'X-CMC_PRO_API_KEY': api
-    }
+  if (!api) {
+    console.log("No CoinMarketCap API key configured, skipping ticker");
+    return;
   }
-  var url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol='+parseCoin(coin)+'&convert='+currencyS.toUpperCase();
-  console.log ("requesting " + url);
-  fetch(url, options)
-	.then(res=> res.text())
-	.then(res => {
-      console.log(res);
-      var responseJson = JSON.parse(res);
-      var price = 0;
-      price = responseJson["data"][parseCoin(coin)]["quote"][currencyS.toUpperCase()]["price"];
-      price = getRepString(price);
-      console.log("Ticker:  "+ price);
-
-      Pebble.sendAppMessage({
-          'KEY_MESSAGE_TYPE': MESSAGE_TYPE_TICKER,
-          'KEY_MESSAGE_ID1' : messageId,
-          'KEY_TICKER': price
-      });
-	});
+  console.log("CMC api: " + api);
+  var currencyS = parseCurrency(currency);
+  var url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=" + parseCoin(coin) + "&convert=" + currencyS.toUpperCase();
+  console.log("requesting " + url);
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", url);
+  xhr.setRequestHeader("X-CMC_PRO_API_KEY", api);
+  xhr.onload = function() {
+    console.log(xhr.responseText);
+    var responseJson = JSON.parse(xhr.responseText);
+    var price = responseJson["data"][parseCoin(coin)]["quote"][currencyS.toUpperCase()]["price"];
+    price = getRepString(price);
+    console.log("Ticker:  " + price);
+    Pebble.sendAppMessage({
+      "KEY_MESSAGE_TYPE": MESSAGE_TYPE_TICKER,
+      "KEY_MESSAGE_ID1": messageId,
+      "KEY_TICKER": price
+    });
+  };
+  xhr.send();
 }
 
 function queryString(messageId, url) {

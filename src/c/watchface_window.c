@@ -767,12 +767,10 @@ static void update_hands(Layer *layer, GContext *ctx) {
     gpath_draw_outline(ctx, this->minute_hand_path);
 
     // dot in the middle
-    graphics_context_set_fill_color(ctx, this->color_foreground_2);
-    graphics_fill_circle(ctx, center, 5);
-    graphics_context_set_stroke_color(ctx, this->color_background);
-    graphics_draw_circle(ctx, center, 3);
     graphics_context_set_fill_color(ctx, this->color_background);
-    graphics_fill_circle(ctx, center, 1);
+    graphics_fill_circle(ctx, center, 5);
+    graphics_context_set_fill_color(ctx, this->color_foreground_2);
+    graphics_fill_circle(ctx, center, 3);
   }
   else if (this->hand_style == 2) // Space
   {
