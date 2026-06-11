@@ -931,6 +931,7 @@ GFont get_weather_font(WatchfaceWindow *this) {
     break;
     default: // no font picked.  Default to medium font, but log an error first
       APP_LOG(APP_LOG_LEVEL_ERROR, "trying to set weather font, but value out of range %d", this->temperature_font_size);
+      /* fallthrough */
     case 2: // medium font  (which is the same font used for date)
        return this->font_date;
     break;
@@ -947,6 +948,7 @@ GFont get_ticker_font(WatchfaceWindow *this) {
     break;
     default: // no font picked.  Default to medium font, but log an error first
       APP_LOG(APP_LOG_LEVEL_ERROR, "trying to set ticker font, but value out of range %d", this->ticker_font_size);
+      /* fallthrough */
     case 2: // medium font  (which is the same font used for date)
        return this->font_date;
     break;
