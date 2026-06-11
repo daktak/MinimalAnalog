@@ -1,7 +1,7 @@
 {
     "author": "daktak@domo.ddns.net",
     "dependencies": {
-        "pebble-clay": "^1.0.2"
+        "@rebble/clay": "^1.0.10"
     },
     "keywords": [],
     "name": "minimal-analog2",
@@ -32,9 +32,9 @@
             "KEY_STRING_URL": 30,
             "KEY_TEMPERATURE": 3,
             "KEY_TICKER": 21,
+            "KEY_TICKER_API": 32,
             "KEY_TICKER_ON": 26,
             "KEY_TICKER_SIZE": 22,
-            "KEY_TICKER_API": 32,
             "SECONDS_HAND_DURATION": 18,
             "SHOW_BATTERY_AT_PERCENT": 8,
             "SHOW_SECONDS_HAND": 5,
@@ -79,14 +79,14 @@
                     "type": "font"
                 },
                 {
-                    "characterRegex": "[-a-zA-Z0-9°]",
+                    "characterRegex": "[-a-zA-Z0-9\u00b0]",
                     "file": "fonts/Epitet-Regular.ttf",
                     "name": "FONT_EPITET_REGULAR_15",
                     "targetPlatforms": null,
                     "type": "font"
                 },
                 {
-                    "characterRegex": "[- 0-9°]",
+                    "characterRegex": "[- 0-9\u00b0]",
                     "file": "fonts/Epitet-Regular.ttf",
                     "name": "FONT_EPITET_REGULAR_12",
                     "targetPlatforms": null,
@@ -106,7 +106,10 @@
             "aplite",
             "basalt",
             "chalk",
-            "diorite"
+            "diorite",
+            "emery",
+            "gabbro",
+            "flint"
         ],
         "uuid": "f7e8c572-f5a0-41ea-8cff-0f30a151c225",
         "watchapp": {
